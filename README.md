@@ -8,3 +8,10 @@ New connection only takes 0.048981673128571% of Old connection<br>
 
 # week2:  
 HomePage
+1. load all movies on index.php (no hardcode)
+2. 
+##  test and debugger code example
+ <?php   <br>
+   var_dump($getMovies);   //var_dump is you can check what is inside of this variable $getMovies<br>
+   exit;    //terminate PHP writing here, no line after exit will be execute<br>
+ ?>

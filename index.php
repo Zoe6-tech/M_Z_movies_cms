@@ -1,3 +1,9 @@
+<?php
+     require_once './config/database.php';
+     require_once './admin/scripts/read.php';
+
+     $getMovies=getAllMovies();//call the function from read.php, assign what returned to a new variable call $getMovies
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -17,16 +23,26 @@
             <li><a href="#">All</a></li>
        </ul>
        </header>
+       
+       <!--repute code x times each one for each movie-->
+       <?php foreach ($getMovies as $movie) : ?>
 
-       <div class="movie-item">
-            <img src="images/gravity.jpg" alt="gravity Cover Image">
-            <h3>Gravity</h3>
-            <h4>Movie Released: 2013</h4>
+         <!--in PHP, if want to put HTML between two PHP tags, the best practie is not using bracket{} instead use colon : -->
+         <!-- $movie['match the column'] -->
+         <div class="movie-item">
+             <img src="images/<?php echo $movie['movies_cover'];?>" alt="<?php echo $movie['movies_title'];?> Cover Image">
+            <h3><?php echo $movie['movies_title'];?></h3>
+            <h4>Movies Released : <?php echo $movie['movies_release'];?></h4>
             <a href="#">More detail...</a>
-       </div>
+            <h4>Movies Runtime : <?php echo $movie['movies_runtime'];?></h4>
+            <p><?php echo $movie['movies_storyline'];?></p>
+         </div>
+         
+       <?php endforeach?>
+
 
        <footer>
-           <p>Copyright © 2021 Zhu Meng</p>
+           <p>Copyright © <?php echo date('Y');?> Zhu Meng</p> <!--Y is year-->
        </footer>
 
 </body>

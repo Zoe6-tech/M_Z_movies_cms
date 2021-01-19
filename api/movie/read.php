@@ -9,7 +9,9 @@ include_once '../objects/movie.php';
 
 // instantiate database and movie object
 // $database = new Database();
-$database =Database::getInstance();// the only thing is change    $database = new Database();    to   $database =Database::getInstance();
+$database =Database::getInstance();
+// the only thing is change    $database = new Database();    to   $database =Database::getInstance();
+// compatiable with new database connector
 $db       = $database->getConnection();
 
 // initialize object
