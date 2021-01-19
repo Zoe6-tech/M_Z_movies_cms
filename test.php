@@ -1,5 +1,5 @@
 <?php
-
+//test.php is about function to measure of performance
 include_once 'config/database_old.php';//old
 include_once 'config/database.php';//new
 
@@ -30,7 +30,7 @@ $old_time_cal=microtime(true) - $start;
 $start = microtime(true);
 $i=0;
 while($i<1000){
-    $database =Database::getInstance();
+    $database =Database::getInstance();//only differet here
     $db=$database->getConnection();
     $i++;
 }
@@ -41,7 +41,7 @@ $new_time_cal=microtime(true) - $start;
 # 4. make result visible
 printf('DB Old Connection Cal ===> %s ms'.PHP_EOL, $old_time_cal * 1000);  //microsecond(ms) is unit, so *1000
 // http://localhost/M_Z_movies_cms/test.php should be abole to see :  DB Old Connection Cal ===> 1463.11211586 ms 
-printf('DB New Connection Cal ===> %s ms'.PHP_EOL, $new_time_cal * 1000); 
+printf('DB New Connection Cal ===> %s ms'.PHP_EOL, $new_time_cal * 1000);  //EOL: end of line
 
 //---------------------------------------------------------------------------------------------------------------
 ## 5. Show result-compare
