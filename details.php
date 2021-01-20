@@ -1,6 +1,5 @@
 <?php
-     require_once './config/database.php';
-     require_once './admin/scripts/read.php';
+     require_once 'load.php';
     
     //  $movie=getSingleMovie(1);//test $id = 1  
 
@@ -21,15 +20,8 @@
 </head>
 
 <body>
-       <header>
-       <h2>This content could be your nav</h2>
-       <ul class="filterNav">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Comedy</a></li>
-            <li><a href="#">Family</a></li>
-            <li><a href="#">All</a></li>
-       </ul>
-       </header>
+      
+       <?php include 'templates/header.php' ?>
        
        <!--------------------show only one movies at one time--------------------->
 
@@ -39,7 +31,6 @@
              <img src="images/<?php echo $movie['movies_cover'];?>" alt="<?php echo $movie['movies_title'];?> Cover Image">
             <h3><?php echo $movie['movies_title'];?></h3>
             <h4>Movies Released : <?php echo $movie['movies_release'];?></h4>
-            <a href="#">More detail...</a>
             <h4>Movies Runtime : <?php echo $movie['movies_runtime'];?></h4>
             <p><?php echo $movie['movies_storyline'];?></p>
          </div>
@@ -51,9 +42,7 @@
        <?php endif?>
 
 
-       <footer>
-           <p>Copyright © <?php echo date('Y');?> Zhu Meng</p> <!--Y is year-->
-       </footer>
+       <?php include 'templates/footer.php' ?>
 
 </body>
 </html>
