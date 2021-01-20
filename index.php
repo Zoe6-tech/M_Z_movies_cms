@@ -1,10 +1,6 @@
 <?php
-    
-    //  ini_set('display_errors',1);
-
-     require_once './config/database.php';
-     require_once './admin/scripts/read.php';
-      
+     require_once 'load.php';
+     
      if (isset($_GET['filter'])){
          $filter = $_GET['filter'];
          $getMovies = getMoviesByGenre($filter);
@@ -22,15 +18,7 @@
 </head>
 
 <body>
-       <header>
-       <h2>This content could be your nav</h2>
-       <ul class="filterNav">
-            <li><a href="index.php?filter=action">Action</a></li>
-            <li><a href="index.php?filter=comedy">Comedy</a></li>
-            <li><a href="index.php?filter=family">Family</a></li>
-            <li><a href="index.php">All</a></li>
-       </ul>
-       </header>
+       <?php include 'templates/header.php' ?>
        
        <!--repute code x times each one for each movie-->
        <?php foreach ($getMovies as $movie) : ?>
@@ -38,23 +26,20 @@
          <!--in PHP, if want to put HTML between two PHP tags, the best practie is not using bracket{} instead use colon : -->
          <!-- $movie['match the column'] -->
          <div class="movie-item">
-             <img src="images/<?php echo $movie['movies_cover'];?>" alt="<?php echo $movie['movies_title'];?> Cover Image">
+
+            <img src="images/<?php echo $movie['movies_cover'];?>" alt="<?php echo $movie['movies_title'];?> Cover Image">
             <h3><?php echo $movie['movies_title'];?></h3>
             <h4>Movies Released : <?php echo $movie['movies_release'];?></h4>
+            <h4>Movies Runtime : <?php echo $movie['movies_runtime'];?></h4>
+            <p><?php echo $movie['movies_storyline'];?></p>
 
             <a href=details.php?id=<?php echo $movie['movies_id'];?>>More detail...</a>
-
-            <h4>Movies Runtime : <?php echo $movie['movies_runtime'];?></h4>
-            <h4>Genre: <?php echo $movie['genre_name'];?></h4>
-            <p><?php echo $movie['movies_storyline'];?></p>
          </div>
          
        <?php endforeach?>
 
 
-       <footer>
-           <p>Copyright © <?php echo date('Y');?> Zhu Meng</p> <!--Y is year-->
-       </footer>
+       <?php include 'templates/footer.php' ?>
 
 </body>
 </html>

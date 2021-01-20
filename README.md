@@ -12,8 +12,22 @@ New connection only takes 0.048981673128571% of Old connection<br>
 2. Detail Page : only show one movie at one time base on movies_id
 3. link detail page on each movie, more detail... button
 4. Movies filtered by Genre
+5. Dont repeat code : two way
+* [templates](/templates) :<br>
+```<?php include 'templates/header.php' ?>```<br>
+```<?php include 'templates/footer.php' ?>```<br>
+
+* [load.php](/load.php) : <br>
+```require_once 'load.php';```<br>
+
+6. redirect all pages to home page (index.php) OR deny user access
+if people accidently or on purpose go back end pages such as load.php,header.php... just take those people to the home
+* Apache HTTP access syntax
+
 ##  test and debugger code example
+ <br>
  <?php   <br>
    var_dump($getMovies);   //var_dump is you can check what is inside of this variable $getMovies<br>
    exit;    //terminate PHP writing here, no line after exit will be execute<br>
  ?>
+
