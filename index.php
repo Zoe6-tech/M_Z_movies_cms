@@ -1,8 +1,16 @@
 <?php
+    
+    //  ini_set('display_errors',1);
+
      require_once './config/database.php';
      require_once './admin/scripts/read.php';
-
-     $getMovies=getAllMovies();//call the function from read.php, assign what returned to a new variable call $getMovies
+      
+     if (isset($_GET['filter'])){
+         $filter = $_GET['filter'];
+         $getMovies = getMoviesByGenre($filter);
+     } else {
+         $getMovies=getAllMovies();//call the function from read.php, assign what returned to a new variable call $getMovies
+      }
 ?>
 
 <!DOCTYPE html>
@@ -17,10 +25,10 @@
        <header>
        <h2>This content could be your nav</h2>
        <ul class="filterNav">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Comedy</a></li>
-            <li><a href="#">Family</a></li>
-            <li><a href="#">All</a></li>
+            <li><a href="index.php?filter=action">Action</a></li>
+            <li><a href="index.php?filter=comedy">Comedy</a></li>
+            <li><a href="index.php?filter=family">Family</a></li>
+            <li><a href="index.php">All</a></li>
        </ul>
        </header>
        
@@ -33,8 +41,11 @@
              <img src="images/<?php echo $movie['movies_cover'];?>" alt="<?php echo $movie['movies_title'];?> Cover Image">
             <h3><?php echo $movie['movies_title'];?></h3>
             <h4>Movies Released : <?php echo $movie['movies_release'];?></h4>
+
             <a href=details.php?id=<?php echo $movie['movies_id'];?>>More detail...</a>
+
             <h4>Movies Runtime : <?php echo $movie['movies_runtime'];?></h4>
+            <h4>Genre: <?php echo $movie['genre_name'];?></h4>
             <p><?php echo $movie['movies_storyline'];?></p>
          </div>
          

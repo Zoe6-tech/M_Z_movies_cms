@@ -11,6 +11,7 @@ New connection only takes 0.048981673128571% of Old connection<br>
 1. Home Page : load all movies on index.php (no hardcode) 
 2. Detail Page : only show one movie at one time base on movies_id
 3. link detail page on each movie, more detail... button
+4. Movies filtered by Genre
 ##  test and debugger code example
  <?php   <br>
    var_dump($getMovies);   //var_dump is you can check what is inside of this variable $getMovies<br>
