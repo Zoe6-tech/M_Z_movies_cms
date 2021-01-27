@@ -5,7 +5,6 @@
             <li><a href="index.php?filter=comedy">Comedy</a></li>
             <li><a href="index.php?filter=family">Family</a></li>
             <li><a href="index.php?filter=romance">Romance</a></li>
-            <li><a href="index.php?filter=crime">Crime</a></li>
             <li><a href="index.php?filter=War">War</a></li>
             <li><a href="index.php">All</a></li>
        </ul>

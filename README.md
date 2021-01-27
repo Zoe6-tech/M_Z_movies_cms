@@ -31,3 +31,6 @@ if people accidently or on purpose go back end pages such as load.php,header.php
    exit;    //terminate PHP writing here, no line after exit will be execute<br>
  ?>
 
+# week3 : login page
+proivde a form to login, reject if username or passoword not correct, reject if requirenment field is empty
+* [admin_login.php](/admin/admin_login.php) : <br>

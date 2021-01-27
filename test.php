@@ -42,7 +42,7 @@ $new_time_cal=microtime(true) - $start;
 printf('DB Old Connection Cal ===> %s ms'.PHP_EOL, $old_time_cal * 1000);  //microsecond(ms) is unit, so *1000
 // http://localhost/M_Z_movies_cms/test.php should be abole to see :  DB Old Connection Cal ===> 1463.11211586 ms 
 printf('DB New Connection Cal ===> %s ms'.PHP_EOL, $new_time_cal * 1000);  //EOL: end of line
-
+//PHP_EOL:line break, like <br> in html
 //---------------------------------------------------------------------------------------------------------------
 ## 5. Show result-compare
 $different = ($old_time_cal - $new_time_cal) / 1000;

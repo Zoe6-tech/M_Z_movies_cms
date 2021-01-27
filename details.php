@@ -1,5 +1,5 @@
 <?php
-     require_once 'load.php';
+     require_once 'load.php';//The require statement should be used if the entire script cannot run without the requested file. 
     
     //  $movie=getSingleMovie(1);//test $id = 1  
 
