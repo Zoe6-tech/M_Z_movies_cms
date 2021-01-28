@@ -33,6 +33,7 @@
             <h4>Movies Released : <?php echo $movie['movies_release'];?></h4>
             <h4>Movies Runtime : <?php echo $movie['movies_runtime'];?></h4>
             <p><?php echo $movie['movies_storyline'];?></p>
+            <a href="index.php">Back</a>
          </div>
        
        <!--if movie_id doesn't exist-->
