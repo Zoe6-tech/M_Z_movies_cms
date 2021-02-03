@@ -31,6 +31,14 @@ if people accidently or on purpose go back end pages such as load.php,header.php
    exit;    //terminate PHP writing here, no line after exit will be execute<br>
  ?>
 
-# week3 : login page
-proivde a form to login, reject if username or passoword not correct, reject if requirenment field is empty
+# week3 : add login page
+proivde a form to login, reject if username or passoword not correct, reject if requirenment field is empty<br>
+Normal forms can be sent directly using GET, while confidential information must be handled using POST, such as the login account password of the member.
 * [admin_login.php](/admin/admin_login.php) : <br>
+
+# week4 : 
+## login user to dashborad page
+* validata user input: not empty, need correct and match each other
+* If username and password are correct and match each other
+* need user_ip : $ip = $_SERVER['REMOTE_ADDR'];, update it on DB
+* redirect user to index.php page :  redirect_to() function 
