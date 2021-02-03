@@ -22,6 +22,10 @@ function login($username, $password, $ip) {
 
         $found_user_id = $found_user['user_id'];//get user id
 
+        //write the username and userID into session
+        $_SESSION['user_id'] = $found_user_id;
+        $_SESSION['user_name'] = $found_user['user_fname'];
+
         //update the user IP by the curren logged in one
         $update_user_query = 'UPDATE tbl_user SET user_ip = :user_ip WHERE user_id = :user_id';
         $update_user_set = $pdo -> prepare($update_user_query);
@@ -41,6 +45,21 @@ function login($username, $password, $ip) {
     }else{
 
        //this is invaild attemp, reject it!
-       return "Sorry, your username or password isn't correct. Please try again!";
+       return "Sorry, your username or password isn't correct. Please try again or sign in first.";
     }
+}
+
+
+//only login in user can see the index.php, otherwise, rediect to login page
+function confirm_logged_in(){
+    if(!isset($_SESSION['user_id'])){
+          redirect_to('admin_login.php');
+    }
+}
+
+
+//if user log out, redirect user to admin_login.php
+function logout(){
+    session_destroy();
+    redirect_to('admin_login.php');
 }
