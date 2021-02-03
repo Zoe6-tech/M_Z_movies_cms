@@ -1,11 +1,15 @@
 <?php
 require_once '../load.php';
 
+$ip = $_SERVER['REMOTE_ADDR'];//"REMOTE_ADDR" => The IP address from which the user is viewing the current page.
+//we want get the value $ip, and add it in login() as the third parameter
+
 if(isset($_POST['submit'])){
     $username = trim($_POST['username']);
     $password = trim($_POST['password']); //The trim() function removes whitespace and other predefined characters from both sides of a string.
-    if(!empty(username) && !empty($password)){
-        $result = login($username,$password);
+    
+    if(!empty($username) && !empty($password)){//if username and password both not empty
+        $result = login($username, $password, $ip);//allow login, login function in login.php
         $message = $result;
     }else{
         $message = 'Plesase fill out the request field';
@@ -21,7 +25,7 @@ if(isset($_POST['submit'])){
     <title>Welcome to the admin panel</title>
 </head>
 <body>
-    <?php echo !empty($message)?$message:'';?> 
+    <?php echo !empty($message)?$message:'';?> <!--if $message isnt empty, print $message info-->
 
     <form action="admin_login.php" method="post">
        <label for="username">Username:</label>

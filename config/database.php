@@ -18,6 +18,7 @@ class Database
 
 
     # 2. add a new function __construct
+    //__construct() is the method name for the constructor. The constructor is called on an object after it has been created, and is a good place to put initialisation code, etc.
     private function __construct(){
         $db_dsn = array(
             'host'    => $this->host,
