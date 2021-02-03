@@ -42,3 +42,19 @@ Normal forms can be sent directly using GET, while confidential information must
 * If username and password are correct and match each other
 * need user_ip : $ip = $_SERVER['REMOTE_ADDR'];, update it on DB
 * redirect user to index.php page :  redirect_to() function 
+
+## session & cookie
+* server can remember user browser  -  save time, benefit user
+* Server create a session(logger), session need unique for each user browser
+* Session would store something temporay on the server will faster all those authentication going forward
+* When user log out, session delete
+* If user not active for a while, session 
+
+## session id check
+Network->Cookies->PHPSESSID	"eismosan1j076bt8psdbq197hh"
+
+## login logout redirect
+* only login in user can see the index.php page
+* if user already log in, redirect user to index.php, dont allow login in user access admin_login.php again
+* if people didnt log in, they cannot log out
+
