@@ -3,7 +3,7 @@
 function getAllMovies(){
 
     $pdo=Database::getInstance()->getConnection();
-    $queryAll="SELECT * FROM tbl_movies";
+    $queryAll="SELECT * FROM tbl_movies"; //user placeholder later
    
     $runAll=$pdo->query($queryAll);
     $movies=$runAll->fetchAll(PDO::FETCH_ASSOC); //use fetchall to fetch the results of the SQL query
