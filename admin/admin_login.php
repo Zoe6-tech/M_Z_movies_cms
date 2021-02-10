@@ -17,11 +17,11 @@ if(isset($_POST['submit'])){
     }
 }
 
-
 //if user already log in, redirect user to index.php, dont allow login in user access admin_login.php again
 if(isset($_SESSION['user_id'])){
     redirect_to('index.php');
 }
+
 ?>
 
 <!DOCTYPE html>
