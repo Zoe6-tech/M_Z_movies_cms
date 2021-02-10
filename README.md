@@ -62,4 +62,5 @@ Network->Cookies->PHPSESSID	"eismosan1j076bt8psdbq197hh"
 
 
 # Week5: Create a user functionality within CMS
-* create user page view
+* create user 
+* user squal injection can damage every thing
