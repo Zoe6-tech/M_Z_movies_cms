@@ -36,25 +36,30 @@ proivde a form to login, reject if username or passoword not correct, reject if 
 Normal forms can be sent directly using GET, while confidential information must be handled using POST, such as the login account password of the member.
 * [admin_login.php](/admin/admin_login.php) : <br>
 
-# week4 : 
+
+
+# week4 : sessoin is a great concept that make the back and the life way easier
 ## login user to dashborad page
 * validata user input: not empty, need correct and match each other
 * If username and password are correct and match each other
 * need user_ip : $ip = $_SERVER['REMOTE_ADDR'];, update it on DB
 * redirect user to index.php page :  redirect_to() function 
 
-## session & cookie
+## session & cookie : session_start()
 * server can remember user browser  -  save time, benefit user
 * Server create a session(logger), session need unique for each user browser
 * Session would store something temporay on the server will faster all those authentication going forward
-* When user log out, session delete
+* When user log out, session delete  : session_destory()
 * If user not active for a while, session 
 
 ## session id check
 Network->Cookies->PHPSESSID	"eismosan1j076bt8psdbq197hh"
 
-## login logout redirect
+## session will check - login logout redirect
 * only login in user can see the index.php page
 * if user already log in, redirect user to index.php, dont allow login in user access admin_login.php again
 * if people didnt log in, they cannot log out
 
+
+# Week5: Create a user functionality within CMS
+* create user page view
