@@ -67,3 +67,5 @@ Network->Cookies->PHPSESSID	"eismosan1j076bt8psdbq197hh"
 
 * use placeholder prevent SQL injection 
 
+
+# Week6:admin-user level
