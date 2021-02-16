@@ -9,7 +9,8 @@ if(isset($_POST['submit'])){
         'fname' => trim($_POST['fname']),
         'username' => trim($_POST['username']),
         'password' => trim($_POST['password']),
-        'email' => trim($_POST['email'])
+        'email' => trim($_POST['email']),
+        'user_level' => trim($_POST['user_level']),
     );
 
     $message = createUser($data);
@@ -40,6 +41,13 @@ if(isset($_POST['submit'])){
 
         <label for="email">Email:</label><br>
         <input type="email" name="email"  id="email" placeholder="enter email" value=""><br><br>
+
+        <label for="user_level">User Level:</label><br>
+        <select  name="user_level"  id="user_level" >
+          <option value="0">Web Editor</option>
+          <option value="1">Web Admin</option>
+        </select><br><br>
+       
 
         <button type="submit" name="submit">Create user</button>
     </form>
