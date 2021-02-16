@@ -4,10 +4,11 @@ function getUserLevelMap(){
     return array(
         '0' => 'Web Editor',
         '1' => 'Web Admin',
+        '2' => 'Web Admin Super Admin',
     );
 }
 
-//
+//display user level on dashboard
 function getCurrentUseLevel(){
     $user_level_map = getUserLevelMap();
     if(isset($_SESSION['user_level']) && array_key_exists($_SESSION['user_level'], $user_level_map)){

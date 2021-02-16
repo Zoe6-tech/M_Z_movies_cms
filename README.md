@@ -72,5 +72,6 @@ Network->Cookies->PHPSESSID	"eismosan1j076bt8psdbq197hh"
 * two type of user : admin VS editor
 1. restrict the create user only by admin ==> how do we make it more general? or resuseable?
 2. redirect editor away from create user page ==> reuseable?
+* function getUserLevelMap() , getCurrentUseLevel()
 3. display the user level to our dashboard page
 4. 
