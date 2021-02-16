@@ -25,6 +25,7 @@ function login($username, $password, $ip) {
         //write the username and userID into session
         $_SESSION['user_id'] = $found_user_id;
         $_SESSION['user_name'] = $found_user['user_fname'];
+        $_SESSION['user_level'] = $found_user['user_level'];
 
         //update the user IP by the curren logged in one
         $update_user_query = 'UPDATE tbl_user SET user_ip = :user_ip WHERE user_id = :user_id';

@@ -1,4 +1,22 @@
 <?php
+//drop down menu
+function getUserLevelMap(){
+    return array(
+        '0' => 'Web Editor',
+        '1' => 'Web Admin',
+    );
+}
+
+//
+function getCurrentUseLevel(){
+    $user_level_map = getUserLevelMap();
+    if(isset($_SESSION['user_level']) && array_key_exists($_SESSION['user_level'], $user_level_map)){
+        // array_key_exists will check $_SESSION['user_level'] whether exist in array $user_level_map for not
+        return $user_level_map[$_SESSION['user_level']];
+    }else{
+        return "unrecognized";
+    }
+}
 
 function createUser($user_data){
     ##testing only, remove it later
