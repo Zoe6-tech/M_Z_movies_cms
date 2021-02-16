@@ -52,9 +52,13 @@ function login($username, $password, $ip) {
 
 
 //only login in user can see the index.php, otherwise, rediect to login page
-function confirm_logged_in(){
-    if(!isset($_SESSION['user_id'])){
-          redirect_to('admin_login.php');
+function confirm_logged_in($admin_above_only = false){
+    if(!isset($_SESSION['user_id'])) {
+        redirect_to('admin_login.php');//redirect non-login user to login page 
+    }
+    //editor dont have access to create user page
+    if(!empty($admin_above_only) && empty($_SESSION['user_level'])){
+        redirect_to('index.php');//for login user if not admin level 
     }
 }
 
