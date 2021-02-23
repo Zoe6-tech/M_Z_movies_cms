@@ -6,6 +6,7 @@ function login($username, $password, $ip) {
     //return 'You are trying to login with Username:'.$username.'Password:'.$password;
 
     //database connecters
+    //login in
     $pdo = Database :: getInstance() -> getConnection();
     #TODO: Finish the following query to check if the username and passowrd are matching in DB
     $get_user_query = ' SELECT * FROM tbl_user  WHERE user_name = :username AND user_pass = :password ';

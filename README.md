@@ -75,3 +75,5 @@ Network->Cookies->PHPSESSID	"eismosan1j076bt8psdbq197hh"
 * function getUserLevelMap() , getCurrentUseLevel()
 3. display the user level to our dashboard page
 4. 
+
+# Week7:  load user info on edit user page

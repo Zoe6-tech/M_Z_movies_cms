@@ -19,6 +19,7 @@ function getCurrentUseLevel(){
     }
 }
 
+//add new user to database
 function createUser($user_data){
     ##testing only, remove it later
     // return var_export($user_data, true);
@@ -29,8 +30,6 @@ function createUser($user_data){
 
   
     //return $create_user_query;
-    
-    
     ## 1. Run the proper SQL query, insert user into tbl_user
     $create_user_set = $pdo -> prepare($create_user_query);
     $create_user_result = $create_user_set -> execute(
@@ -52,9 +51,24 @@ function createUser($user_data){
     }else{
         return 'The user did not go through!!!';
     }
-
-
-
-    ## 3. 
 }
 
+
+function getSingleUser($user_id){
+    // echo 'you are try to fetch user :'.$user_id;
+    $pdo = Database::getInstance() -> getConnection();
+
+    $get_user_query = 'SELECT * FROM tbl_user WHERE user_id = :id';//SQL placeholder to aviod SQL injection
+    $get_user_set = $pdo ->prepare($get_user_query);
+    $result = $get_user_set -> execute(
+        array(
+            ':id' => $user_id
+        )
+        );
+
+    if($result && $get_user_set ->rowCount()){
+        return $get_user_set;
+    }else{
+        return false;
+    }
+}
