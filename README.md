@@ -76,4 +76,6 @@ Network->Cookies->PHPSESSID	"eismosan1j076bt8psdbq197hh"
 3. display the user level to our dashboard page
 4. 
 
-# Week7:  load user info on edit user page
+# Week7:  
+1. load user info on edit user page
+2. admin has right updata user info
