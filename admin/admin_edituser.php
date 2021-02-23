@@ -9,6 +9,22 @@ $current_user = getSingleUser($id);//function in user.php
 if(empty($current_user)){//is user doesnt exist
     $message = 'failed to get user info';
 }
+
+
+// when user click submit
+if(isset($_POST['submit'])){
+    $data = array(
+        'fname'      => trim($_POST['fname']),
+        'username'   => trim($_POST['username']),
+        'password'   => trim($_POST['password']),
+        'email'      => trim($_POST['email']),
+        'user_level' => trim($_POST['user_level']),
+        'id'         => $id,//update a exist user so need id
+    );
+    
+  $message = editUser($data);//update user info to database
+}
+
 ?>
 
 <!DOCTYPE html>

@@ -34,16 +34,13 @@ function createUser($user_data){
     $create_user_set = $pdo -> prepare($create_user_query);
     $create_user_result = $create_user_set -> execute(
         array(
-          ':fname' =>$user_data['fname'],
-          ':username' =>$user_data['username'],
-          ':password' =>$user_data['password'],
-          ':email' =>$user_data['email'],
+          ':fname'      =>$user_data['fname'],
+          ':username'   =>$user_data['username'],
+          ':password'   =>$user_data['password'],
+          ':email'      =>$user_data['email'],
           ':user_level' =>$user_data['user_level'],
         )
     );
-
-
-
     ## 2. Redirect to index.php if create user successfully, mayber leave some message to user? 
     ## Otherwise, showing error message
     if($create_user_result){
@@ -60,15 +57,44 @@ function getSingleUser($user_id){
 
     $get_user_query = 'SELECT * FROM tbl_user WHERE user_id = :id';//SQL placeholder to aviod SQL injection
     $get_user_set = $pdo ->prepare($get_user_query);
-    $result = $get_user_set -> execute(
+    $get_user_result = $get_user_set -> execute(
         array(
             ':id' => $user_id
         )
         );
 
-    if($result && $get_user_set ->rowCount()){
+    if($get_user_result && $get_user_set ->rowCount()){
         return $get_user_set;
     }else{
         return false;
     }
+}
+
+function editUser($user_data){
+    $pdo = Database::getInstance() -> getConnection();
+
+    $update_user_query = 'UPDATE tbl_user SET user_fname = :fname, user_name = :username, user_pass = :password, user_email = :email, user_level = :user_level WHERE user_id = :id';
+    $update_user_set = $pdo ->prepare($update_user_query);
+    $update_user_result = $update_user_set -> execute(
+        array(
+          ':fname'      =>$user_data['fname'],
+          ':username'   =>$user_data['username'],
+          ':password'   =>$user_data['password'],
+          ':email'      =>$user_data['email'],
+          ':user_level' =>$user_data['user_level'],
+          ':id'         =>$user_data['id'],
+            
+        )
+    );
+
+    //its a legit SQL query you want, some error?
+    $update_user_set -> debugDumpParams();
+    exit;
+
+    if($update_user_result){
+        redirect_to('index.php');
+    }else{
+        return 'The user update not go through!!!';
+    }
+
 }
