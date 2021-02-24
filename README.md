@@ -78,4 +78,5 @@ Network->Cookies->PHPSESSID	"eismosan1j076bt8psdbq197hh"
 
 # Week7:  
 1. load user info on edit user page
-2. admin has right updata user info
+2. user can updata their user info
+3. username validation, edit / create

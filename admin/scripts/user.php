@@ -4,7 +4,7 @@ function getUserLevelMap(){
     return array(
         '0' => 'Web Editor',
         '1' => 'Web Admin',
-        '2' => 'Web Admin Super Admin',
+        '2' => 'Super Admin',
     );
 }
 
@@ -21,8 +21,12 @@ function getCurrentUseLevel(){
 
 //add new user to database
 function createUser($user_data){
-    ##testing only, remove it later
-    // return var_export($user_data, true);
+
+    //if user data does not have this username or username already exist
+    if(empty($user_data['username'])||isUsernameExists($user_data['username'])){
+        return 'Username is invalid!';
+    }
+
     $pdo = Database::getInstance() -> getConnection();
 
     $create_user_query = 'INSERT INTO tbl_user(user_fname, user_name, user_pass, user_email, user_level)';
@@ -71,6 +75,11 @@ function getSingleUser($user_id){
 }
 
 function editUser($user_data){
+
+    if(empty($user_data['username'])||isUsernameExists($user_data['username'])){
+        return "Username is invalid!";
+    }
+
     $pdo = Database::getInstance() -> getConnection();
 
     $update_user_query = 'UPDATE tbl_user SET user_fname = :fname, user_name = :username, user_pass = :password, user_email = :email, user_level = :user_level WHERE user_id = :id';
@@ -88,13 +97,36 @@ function editUser($user_data){
     );
 
     //its a legit SQL query you want, some error?
-    $update_user_set -> debugDumpParams();
-    exit;
+    // $update_user_set -> debugDumpParams();
+    // exit;
 
     if($update_user_result){
+        //check update session after edit user
+        $_SESSION['user_name'] = $user_data['fname'];//up to date
+        $_SESSION['user_level'] = $user_data['user_level'];
         redirect_to('index.php');
     }else{
         return 'The user update not go through!!!';
     }
 
 }
+
+//only admin can access or change
+function isCurrentUserAdminAbove(){
+    return !empty($_SESSION['user_level']);
+}
+
+function isUsernameExists($username){//true=exist, stop 
+    $pdo = Database::getInstance() -> getConnection();
+
+    $user_exists_query = 'SELECT COUNT(*) FROM tbl_user WHERE user_name = :username'; 
+    $user_exists_set = $pdo ->prepare($user_exists_query);
+    $user_exists_result = $user_exists_set -> execute(
+        array(
+          ':username'=>$username
+        )
+    );
+   
+    return !$user_exists_result || $user_exists_set->fetchColumn()>0;
+                                  // if this username more than 0, mean this user already exist  
+} 
