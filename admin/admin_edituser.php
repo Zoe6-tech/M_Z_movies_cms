@@ -1,7 +1,7 @@
 <?php
 require_once '../load.php';
 //make sure this page only access to 
-confirm_logged_in(true);
+confirm_logged_in();
 
 $id = $_SESSION['user_id'];//define in login.php
 $current_user = getSingleUser($id);//function in user.php
@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
         'username'   => trim($_POST['username']),
         'password'   => trim($_POST['password']),
         'email'      => trim($_POST['email']),
-        'user_level' => trim($_POST['user_level']),
+        'user_level' => isCurrentUserAdminAbove()?trim($_POST['user_level']):'0',
         'id'         => $id,//update a exist user so need id
     );
     
@@ -59,7 +59,9 @@ if(isset($_POST['submit'])){
                 <label for="email">Email:</label><br>
                 <input type="email" name="email"  id="email" placeholder="enter email" value="<?php echo $user_info['user_email']; ?>">
                 <br><br>
-     
+
+
+              <?php if(isCurrentUserAdminAbove()):?>
                 <label for="user_level">User Level:</label><br>
                 <select  name="user_level"  id="user_level" >
                     <?php  $user_level_map = getUserLevelMap();
@@ -67,6 +69,7 @@ if(isset($_POST['submit'])){
                     <option value="<?php echo $val;?>"<?php echo $val ===(int)$user_info['user_level']?'selected':'';?>><?php echo $label;?></option>   
                     <?php endforeach;?>
                 </select><br><br>
+              <?php endif;?>
 
                 <button type="submit" name="submit">Update User</button>
                   
