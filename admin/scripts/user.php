@@ -74,11 +74,49 @@ function getSingleUser($user_id){
     }
 }
 
+function getAllUsers(){
+    $pdo = Database::getInstance() -> getConnection();
+
+    $get_all_user_query = 'SELECT * FROM tbl_user ';//SQL placeholder to aviod SQL injection
+    $users = $pdo ->query($get_all_user_query);
+
+    if($users){
+         return $users;
+    }else{
+        return false;
+    }
+    
+}
+
+
+function deleteUser($user_id){
+    $pdo = Database::getInstance() -> getConnection();
+
+    $delete_user_query = 'DELETE FROM tbl_user WHERE user_id = :id ';//SQL placeholder to aviod SQL injection
+    $delete_user_set = $pdo ->prepare($delete_user_query);
+    $delete_user_result = $delete_user_set -> execute(
+        array(
+            ':id' => $user_id
+        )
+        );
+    if($delete_user_result && $delete_user_set -> rowCount()>0){
+        redirect_to('admin_deleteuser.php');
+    }else{
+        return false;
+    }
+}
+
+
 function editUser($user_data){
 
-    if(empty($user_data['username'])||isUsernameExists($user_data['username'])){
-        return "Username is invalid!";
-    }
+    $existing_user = getSingleUser($user_data['id'])->fetch();
+    
+	# only check that the username is taken if it actually changed
+    if ($existing_user['user_name'] != $user_data['username']) {
+    		if(empty($user_data['username']) || isUsernameExists($user_data['username'])){
+        	return 'Username is invalid!!';
+            }
+	}
 
     $pdo = Database::getInstance() -> getConnection();
 

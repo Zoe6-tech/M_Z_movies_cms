@@ -16,11 +16,12 @@ confirm_logged_in();//only login in user can see the index.php page
     
     
     <?php if(isCurrentUserAdminAbove()):?>
-    <a href="admin_createuser.php">Create User</a>
+    <a href="admin_createuser.php">Create User</a><br><br>
+    <a href="admin_deleteuser.php">Delete User</a><br><br>
     <?php endif;?>
 
-    
-    <a href="admin_logout.php">Sign Out</a><br><br>
     <a href="admin_edituser.php">Edit User</a><br><br>
+    <a href="admin_logout.php">Sign Out</a>
+    
 </body>
 </html>
