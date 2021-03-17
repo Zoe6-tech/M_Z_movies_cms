@@ -71,7 +71,8 @@ if(isset($_POST['submit'])){
                 </select><br><br>
               <?php endif;?>
 
-                <button type="submit" name="submit">Update User</button>
+                <button type="submit" name="submit">Update User</button><br><br>
+                <a href="index.php">Back</a>
                   
             <?php endwhile;?>
         </form>

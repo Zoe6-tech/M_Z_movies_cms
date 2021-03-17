@@ -53,7 +53,8 @@ if(isset($_POST['submit'])){
         </select><br><br>
        
 
-        <button type="submit" name="submit">Create user</button>
+        <button type="submit" name="submit">Create user</button><br><br>
+                <a href="index.php">Back</a>
     </form>
     
 </body>
