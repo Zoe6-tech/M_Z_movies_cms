@@ -74,6 +74,7 @@ function getSingleUser($user_id){
     }
 }
 
+
 function getAllUsers(){
     $pdo = Database::getInstance() -> getConnection();
 
