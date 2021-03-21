@@ -21,6 +21,7 @@ confirm_logged_in();//only login in user can see the index.php page
     <?php endif;?>
 
     <a href="admin_edituser.php">Edit User</a><br><br>
+    <a href="admin_addmovie.php">Add Movie</a><br><br>
     <a href="admin_logout.php">Sign Out</a>
     
 </body>
