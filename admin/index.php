@@ -16,6 +16,7 @@ confirm_logged_in();//only login in user can see the index.php page
     
     
     <?php if(isCurrentUserAdminAbove()):?>
+    <a href="admin_addmovie.php">Add Movie</a><br><br>
     <a href="admin_createuser.php">Create User</a><br><br>
     <a href="admin_deleteuser.php">Delete User</a><br><br>
     <?php endif;?>
