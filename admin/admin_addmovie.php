@@ -17,7 +17,8 @@ if(isset($_POST['submit'])){
         'runtime' => trim($_POST['runtime']),
         'trailer' => trim($_POST['trailer']),
         'release' => trim($_POST['release']),
-        'storyline' => trim($_POST['storyline'])
+        'storyline' => trim($_POST['storyline']),
+        'genre' => $_POST['genre']
     );
 
     $message = addMovie($data);
@@ -57,6 +58,18 @@ if(isset($_POST['submit'])){
 
         <label for="release">Movie Release:</label><br>
         <input type="text" name="release"  id="release" ><br><br>
+
+        <?php  $genrelist = getAllMovieGenres();  if(!empty($genrelist)):  ?>
+            <label for="genrelist">Please Select a Movie Genre:</label>
+            <select id="genrelist" name="genre">
+                <?php while($genre = $genrelist -> fetch(PDO::FETCH_ASSOC)):?> <!--loop genre-->
+                    <option value="<?php echo $genre['genre_id'];?>">
+                      <?php echo $genre['genre_name'];?>
+                    </option>   
+                <?php endwhile; ?>
+            </select>
+            <br><br>
+        <?php endif; ?>
 
         <label for="storyline">Movie Storyline:</label><br>
         <textarea  name="storyline"  id="storyline" ></textarea><br><br>
