@@ -54,6 +54,22 @@ function addMovie($movie){
                 ':release'   =>$movie['release']
                   )
              );
+             
+             ##UPDATE genre to another table
+             ## Only when the inset want through, we add the newly created movie to the proper genre
+             $last_updated_id = $pdo -> lastInsertId();
+             if(!empty($last_updated_id) && $insert_movie_result){
+                 ## movies_id from  $insert_movie_query ##genre_id from user select
+                 $update_genre_query  = 'INSERT INTO tbl_mov_genre(movies_id, genre_id) VALUES (:movies_id, :genre_id)';
+                 $update_genre = $pdo -> prepare($update_genre_query);
+                 $update_genre -> execute(
+                     array(
+                        ':movies_id' => $last_updated_id,
+                        ':genre_id'  => $movie['genre']
+                     )
+                 );
+             }
+
 
              # 5. if all of above, redirect user to index.php
              redirect_to('index.php');
@@ -66,4 +82,18 @@ function addMovie($movie){
     }
    
   
+}
+
+
+function getAllMovieGenres(){
+    $pdo = Database::getInstance() -> getConnection();
+
+    $get_all_genre_query = 'SELECT * FROM tbl_genre';
+    $genres = $pdo ->query($get_all_genre_query);
+
+    if($genres){
+         return $genres;
+    }else{
+        return false;
+    }
 }
